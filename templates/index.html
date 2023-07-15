@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            padding: 3rem !important;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem !important;
+            font-size: larger !important;
+        }
+        form {
+            text-align: center;
+        }
+        form * {
+            margin-bottom: 1.5rem !important;
+        }
+        .video-container {
+            text-align: center;
+        }
+        .app-input {
+            width: 60% !important;
+            display: block;
+        }
+        p {
+           text-align: center;
+            font-size: larger;
+        }
+    </style>
+    <title>Display Video</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Hãy nhập link Báo điện tử vào đây</h1>
+<form method="POST" class="video-container">
+    <input class="input is-primary app-input" type="text" name="video_name" placeholder="Link Bài báo điện tử">
+    <input class="button is-primary" type="submit" value="Button link">
+</form>
+
+{% if video_name %}
+<div class="video-container">
+    <video width="640" height="480" controls>
+        <source src="{{ url_for('static', filename='uploads/' + video_name) }}" type="video/mp4">
+    </video>
+</div>
+{% else %}
+<div class="video-container">
+    <img width="640" height="480" src="{{ url_for('static', filename='images/viral-real-estate-video.jpg')}}"/>
+</div>
+
+{% endif %}
+
+<p>{{ topic }}</p>
+
+</body>
+</html>
+
